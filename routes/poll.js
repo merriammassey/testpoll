@@ -15,7 +15,7 @@ const pusher = new Pusher({
 });
 
 //make request
-router.get("/", (req, res) => {
+router.get("/poll", (req, res) => {
   //fetch and send polls
   Vote.find(DeferredPermissionRequest).then((votes) =>
     res.json({ success: true, votes: votes })
