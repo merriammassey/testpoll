@@ -2,18 +2,20 @@ const form = document.getElementById("vote-form");
 
 //Form submit event
 form.addEventListener("submit", (e) => {
-  const choice = document.querySelector("input[name=restaurant]:checked").value;
+  const choice = document.querySelector('input[name="restaurant"]:checked')
+    .value;
   const data = { restaurant: choice };
 
   fetch("http://localhost:3000/poll", {
     method: "post",
-    //body: JSON.stringify(data.trim()),
-    body: JSON.parse(data),
+    //body: JSON.stringify(data,
+    //body: JSON.parse(data),
+    body: data.json(),
     headers: new Headers({
       "Content-Type": "application/json",
     }),
   })
-    .then((res) => res.json())
+    //.then((res) => res.json())
     .then((data) => console.log(data))
     .catch((err) => console.log(err));
 
@@ -22,10 +24,10 @@ form.addEventListener("submit", (e) => {
   //v3 13m get request
   fetch("http://localhost:3000")
     .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log(err));
+    .then((data) => console.log(data));
+  //.catch((err) => console.log(err));
 
-  e.preventDefault();
+  //e.preventDefault();
   const votes = data.votes;
   //for chart text
   const totalVotes = votes.length;
