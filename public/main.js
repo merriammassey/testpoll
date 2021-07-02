@@ -2,15 +2,17 @@ const form = document.getElementById("vote-form");
 
 //Form submit event
 form.addEventListener("submit", (e) => {
+  console.log($('input[name="restaurant"]:checked').serialize());
   const choice = document.querySelector('input[name="restaurant"]:checked')
     .value;
   const data = { restaurant: choice };
 
-  fetch("http://localhost:3000/poll", {
+  fetch("http://localhost:3000", {
     method: "post",
-    //body: JSON.stringify(data,
+    //body: JSON.stringify(data),
     //body: JSON.parse(data),
-    body: data.json(),
+    //body: data.json(),
+    body: data,
     headers: new Headers({
       "Content-Type": "application/json",
     }),
@@ -22,7 +24,7 @@ form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   //v3 13m get request
-  fetch("http://localhost:3000")
+  fetch("http://localhost:3000/")
     .then((res) => res.json())
     .then((data) => console.log(data));
   //.catch((err) => console.log(err));
