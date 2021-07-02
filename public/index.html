@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    
+    <title>TasteBuds</title>
+  </head>
+  <body>
+    <!--chart container-->
+    <div class="container">
+      <h1>Vote</h1>
+      <p>Vote for a restaurant!</p>
+      <form id="vote-form">
+        <p>
+          <input type="radio" style="position:relative;opacity:100;" name="restaurant" id="maskadores" value="Maskadores">
+          <label for="maskadores">Maskadores</label>
+        </p>
+        <p>
+          <input type="radio" style="position:relative;opacity:100;" name="restaurant" id="munichgyro" value="MunichGyro">
+          <label for="munichgyro">MunichGyro</label>
+        </p>
+        <p>
+          <input type="radio" style="position:relative;opacity:100;" name="restaurant" id="starbucks" value="Starbucks">
+          <label for="starbucks">Starbucks</label>
+        </p>
+        <p>
+          <input type="radio" style="position:relative;opacity:100;" name="restaurant" id="none" value="None">
+          <label for="none">Something Else</label>
+        </p>
+        <input type="submit" value="Vote" class="btn">
+      </form>
+      <br />
+      <div id="chartContainer" style="height: 300px;width:100%"></div>
+    </div>
+    
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.js"
+    integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+    crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pusher/7.0.3/pusher.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvasjs/1.7.0/canvasjs.min.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>
