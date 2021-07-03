@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const mongoose = require("mongoose");
-const Vote = require("../models/Vote.js");
+const Vote = require("../models/Vote");
 //
 const Pusher = require("pusher");
 
@@ -28,13 +28,20 @@ router.get("/", (req, res) => {
 
 //when user votes, make request to poll
 router.post("/", (req, res) => {
-  pusher.trigger("tastebuds", "tastebudsvote", {
-    //points: parseInt(vote.points),
-    points: 1,
-    //restaurant: vote.restaurant,
+  const newVote = {
     restaurant: req.body.restaurant,
+    points: 1,
+  };
+
+  new Vote(newVote).save().then((vote) => {
+    pusher.trigger("tastebuds", "tastebudsvote", {
+      points: parseInt(vote.points),
+      //points: 1,
+      restaurant: vote.restaurant,
+      //restaurant: req.body.restaurant,
+    });
+    return res.json({ success: true, message: "Thank you for voting!" });
   });
-  return res.json({ success: true, message: "Thank you vor voting!" });
 });
 
 module.exports = router;

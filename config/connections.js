@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+//map globa promises
 mongoose.Promise = global.Promise;
 
 mongoose

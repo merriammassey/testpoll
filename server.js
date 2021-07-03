@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 //const db = require("./config/connections");
-
+require("./config/connections");
 //FOR POLL
 const bodyParser = require("body-parser");
 const cors = require("cors");
