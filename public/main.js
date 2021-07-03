@@ -81,26 +81,29 @@ if (chartContainer) {
     ],
   });
   chart.render();
-}
-//this curly added
-// Enable pusher logging - don't include this in production
-Pusher.logToConsole = true;
 
-var pusher = new Pusher("3cb02dbd0c542bff3bd5", {
-  cluster: "us3",
-});
+  //this curly added
+  //this subscribes to
+  // Enable pusher logging - don't include this in production
+  Pusher.logToConsole = true;
 
-var channel = pusher.subscribe("tastebuds");
-channel.bind("tastebudsvote", function (data) {
-  dataPoints = dataPoints.map((x) => {
-    if (x.label == data.restaurant) {
-      x.y += data.points;
-      return x;
-    } else {
-      return x;
-    }
+  var pusher = new Pusher("3cb02dbd0c542bff3bd5", {
+    cluster: "us3",
   });
-  chart.render();
-});
+
+  var channel = pusher.subscribe("tastebuds");
+  channel.bind("tastebudsvote", function (data) {
+    dataPoints = dataPoints.map((x) => {
+      if (x.label == data.restaurant) {
+        x.y += data.points;
+        return x;
+      } else {
+        return x;
+      }
+    });
+    //rerender
+    chart.render();
+  });
+}
 //}
 //});
