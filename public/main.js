@@ -25,9 +25,7 @@ form.addEventListener("submit", (e) => {
   //console.log(data);
   e.preventDefault();
 });
-//in video 2 5:23 there is }) after prevent default
 
-//v3 13m get request
 fetch("http://localhost:3000/poll")
   //.then((res) => res.text())
   .then((res) => res.json())
